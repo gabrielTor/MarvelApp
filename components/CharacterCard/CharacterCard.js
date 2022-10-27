@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Image, TouchableOpacity } from 'react-native';
+import { Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 export default function CharacterCard({image, name}) {
@@ -17,3 +17,16 @@ export default function CharacterCard({image, name}) {
     </TouchableOpacity>
   );
 }
+
+const styles = StyleSheet.create({
+    container:{
+      color: 'blue',
+      fontWeight: 'bold',
+      fontSize: 30,
+      alignItems: 'center'
+    },
+    image:{
+        width: 30,
+        height: 30
+    }
+  });
