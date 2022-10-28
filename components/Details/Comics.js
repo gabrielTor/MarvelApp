@@ -1,18 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, ActivityIndicator, FlatList } from 'react-native';
+import { View, ActivityIndicator, FlatList } from 'react-native';
 import apiParams from '../../config';
 import axios from 'axios';
-
-function Comic({ name, image }) {
-    return (
-      <View>
-        <Image
-            source={{uri: image}}
-        />
-        <Text>{name}</Text>
-      </View>
-    )
-  }
+import Comic from './Comic';
 
 export default function Comics({ listComics }) {
   const [isLoading, setLoading] = useState(true);

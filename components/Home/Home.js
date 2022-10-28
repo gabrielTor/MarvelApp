@@ -47,7 +47,7 @@ export default function Home() {
         {isLoading 
           ? <ActivityIndicator size="large" color="#00ff00" /> 
           : (
-            <>
+            <View>
                 <Searchbar
                     placeholder="Search for character..."
                     onChangeText={value => setSearch(value)}
@@ -61,10 +61,11 @@ export default function Home() {
                 renderItem={({ item }) => (
                     <CharacterCard 
                     image={`${item?.thumbnail?.path}.${item?.thumbnail.extension}`} 
-                    name={item.name} />
+                    name={item.name} 
+                    id={item.id}/>
                 )}
                 />
-            </>
+            </View>
           )
         }
       </View>

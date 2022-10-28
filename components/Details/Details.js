@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const Tab = createBottomTabNavigator();
 
-export default function Detail({ route }) {
+export default function Details({ route }) {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const { ts, apikey, hash, baseURL } = apiParams;
@@ -30,8 +30,14 @@ export default function Detail({ route }) {
   return (
     <Tab.Navigator
       initialRouteName="Information"
-      tabBarOptions={{
-        activeTintColor: 'darkred'
+      screenOptions={{
+        tabBarActiveTintColor: 'darkred',
+        tabBarStyle: [
+            {
+              "display": "flex"
+            },
+            null
+          ]
       }}
     >
       <Tab.Screen 
