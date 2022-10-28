@@ -1,12 +1,14 @@
 import { Text, View, Image } from 'react-native';
 
 export default function Comic({ name, image }) {
+
     return (
-      <View>
+      <View style={{margin: 10}}>
         <Image
+            style={{width: 400, height: '95%'}}
             source={{uri: image}}
         />
-        <Text>{name}</Text>
+        <Text style={{textAlign: 'center', fontSize: 25}}>{name}</Text>
       </View>
     )
 }
