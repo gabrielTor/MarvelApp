@@ -10,6 +10,7 @@ export default function Home() {
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const [search, setSearch] = useState('');
+    const [itemsPerPage, setItemsPerPage] = useState(0)
     const { ts, apikey, hash, baseURL } = apiParams;
   
     useEffect(() => {
@@ -17,13 +18,15 @@ export default function Home() {
         params: {
           ts,
           apikey,
-          hash
+          hash,
+          offset: itemsPerPage
         }
       })
-        .then(response => setData(response.data.data.results))
+        .then(response => {
+          setData(prev => [...prev, ...response.data.data.results])})
         .catch(error => console.error(error))
         .finally(() => setLoading(false));
-    }, [])
+    }, [itemsPerPage])
 
     function searchCharacter() {
         if(search) {
@@ -42,6 +45,10 @@ export default function Home() {
         }
     }
   
+    function loadMoreData(){
+      setItemsPerPage(prev => prev + 20)
+    }
+
     return (
       <View>
         {isLoading 
@@ -64,6 +71,8 @@ export default function Home() {
                     name={item.name} 
                     id={item.id}/>
                 )}
+                onEndReached={loadMoreData}
+                onEndReachedThreshold={0.3}
                 />
             </View>
           )
